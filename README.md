@@ -22,7 +22,12 @@ Use skill-writer to build a skill that deploys my app
 ```
 or 
 ```
-Lint this skill folder.
+Use skill-writer to refactor skills/my-skill
+```
+
+or 
+```
+Use skill-writer to lint skills/my-skill
 ```
 
 ## Install
