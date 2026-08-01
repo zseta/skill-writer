@@ -16,24 +16,21 @@ Three entry points:
 - **refactor** — Plan a restructure of an existing skill, get your approval, then rewrite it to comply. Shortens verbose prose.
 - **lint** — Read-only. Report every violation. Never edits.
 
-To use it after install, ask Claude to build, refactor, or lint a skill — for example: "Use skill-writer to build a skill that deploys my app" or "Lint this skill folder."
-
-## Requirements
-
-- A paid Claude plan (directly with Claude or GH Copilot).
-- Code execution turned on (the `lint` step runs a Python script).
+### Example usage:
+```
+Use skill-writer to build a skill that deploys my app
+```
+or 
+```
+Lint this skill folder.
+```
 
 ## Install
 
-### Claude.ai (web or desktop)
-
-1. Download `skill-writer.zip` from this repository. The zip must contain the `skill-writer/` folder at its root, with `SKILL.md` inside that folder.
-2. Open Claude and go to **Settings → Capabilities → Skills** (also shown as **Customize → Skills** in some versions).
-3. Click **Upload skill** and select `skill-writer.zip`.
-4. Claude reads `SKILL.md` and shows the skill name and description. The skill is now active.
-
-Skills you upload here are available in both Claude Chat and Cowork — they share one personal skill library.
-
+### CLI
+```sh
+npx skills add https://github.com/zseta/skill-writer
+```
 ### Claude Code
 
 Copy the skill folder into your skills directory, then restart.
@@ -41,6 +38,7 @@ Copy the skill folder into your skills directory, then restart.
 Personal install (available in every project on your machine):
 
 ```bash
+git clone https://github.com/zseta/skill-writer
 mkdir -p ~/.claude/skills
 cp -r skill-writer ~/.claude/skills/
 ```
@@ -48,6 +46,7 @@ cp -r skill-writer ~/.claude/skills/
 Project install (available only in the current project):
 
 ```bash
+git clone https://github.com/zseta/skill-writer
 mkdir -p .claude/skills
 cp -r skill-writer .claude/skills/
 ```
@@ -59,6 +58,7 @@ Restart Claude Code. Run `/skills` to confirm `skill-writer` loaded.
 Copilot agent mode reads the same SKILL.md format. Copy the folder into a skills directory Copilot scans: `.agents/skills/`.
 
 ```bash
+git clone https://github.com/zseta/skill-writer
 mkdir -p .agents/skills
 cp -r skill-writer .github/skills/
 ```
@@ -69,9 +69,9 @@ Note: the `lint` step runs a Python script. It works where Copilot can run code 
 
 ## Optimized for Claude Code and GitHub Copilot
 
-The `skill-writer` folder is portable. The same folder works in Claude.ai, Claude Code, and GitHub Copilot with no changes — they all read the SKILL.md format. Copy it to whichever skills directory your agent scans.
+The `skill-writer` folder is portable. The same folder works in Claude Code, and GitHub Copilot with no changes — they all read the SKILL.md format. Copy it to whichever skills directory your agent scans.
 
-This applies to the skills `skill-writer` produces too. It writes step instructions tuned to the surface that runs them — claude.ai, Claude Code, or GitHub Copilot — so a skill you build here can target any of the three.
+This applies to the skills `skill-writer` produces too. It writes step instructions tuned to the surface that runs them — Claude Code, or GitHub Copilot.
 
 ## Structure
 
