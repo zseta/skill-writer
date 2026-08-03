@@ -70,15 +70,6 @@ Start a new Copilot session. Copilot loads the skill based on its description, o
 
 Note: the `lint` step runs a Python script. It works where Copilot can run code (agent mode, CLI). In review-only contexts with no code execution, the mechanical checks are skipped and only the judgment checks run.
 
-### Claude API
-
-Upload the skill through the Skills API. See the Skills API quickstart in the Claude Platform docs.
-
-## One folder, every agent
-
-The `skill-writer` folder is portable. The same folder works in Claude.ai, Claude Code, and GitHub Copilot with no changes — they all read the SKILL.md format. Copy it to whichever skills directory your agent scans.
-
-This applies to the skills `skill-writer` produces too. It writes step instructions tuned to the surface that runs them — claude.ai, Claude Code, or GitHub Copilot — so a skill you build here can target any of the three.
 
 ## Structure
 
@@ -98,10 +89,3 @@ skill-writer/
     step-prompt-rules.md# prompt rules for Claude, Claude Code, Copilot
     lint-checks.md      # the full check list
 ```
-
-## Troubleshooting
-
-- **Skill does not appear after upload.** Confirm the zip has the `skill-writer/` folder at its root with `SKILL.md` inside — not `SKILL.md` alone at the zip root.
-- **Skill never triggers.** The description controls triggering. It is written to trigger on any mention of making, editing, or checking a skill. If it still does not fire, ask for it by name: "Use skill-writer to …".
-- **In Claude Code, the skill did not load.** Run `/skills` to check. Restart Claude Code after adding files.
-- **The lint step fails.** Confirm code execution is on and Python is available in the environment.
