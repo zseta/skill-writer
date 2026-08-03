@@ -12,12 +12,19 @@ Three entry points:
 - **refactor** — Plan a restructure of an existing skill, get your approval, then rewrite it to comply. Shortens verbose prose.
 - **lint** — Read-only. Report every violation. Never edits.
 
-To use it after install, ask Claude to build, refactor, or lint a skill — for example: "Use skill-writer to build a skill that deploys my app" or "Lint this skill folder."
+### Example usage:
+```
+Use skill-writer to build a skill that deploys my app
+```
+or 
+```
+Use skill-writer to refactor skills/my-skill
+```
 
-## Requirements
-
-- A paid Claude plan (Pro, Max, Team, or Enterprise).
-- Code execution turned on (the `lint` step runs a Python script).
+or 
+```
+Use skill-writer to lint skills/my-skill
+```
 
 ## Install
 
