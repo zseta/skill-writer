@@ -6,12 +6,12 @@ These facts apply to every entry point in this skill.
 
 - This skill authors other skills. The skill you author is the "target skill".
 - The target skill is built from steps. A step is one unit of a workflow. The target skill runs its own steps. The human does not run steps.
-- Rules this skill applies live in `references/`. Read them when a step tells you to.
-- `references/structure.md` — the folder tree and file templates every target skill must follow.
-- `references/style.md` — how to write step prose (Simplified Technical English).
-- `references/principles.md` — the coding principles applied to skills.
-- `references/step-prompt-rules.md` — how to write step instructions as prompts for Claude models.
-- `references/lint-checks.md` — the full check list.
+- Rules this skill applies live in `_references/`. Read them when a step tells you to.
+- `_references/structure.md` — the folder tree and file templates every target skill must follow.
+- `_references/style.md` — how to write step prose (Simplified Technical English).
+- `_references/principles.md` — the coding principles applied to skills.
+- `_references/step-prompt-rules.md` — how to write step instructions as prompts for Claude models.
+- `_references/lint-checks.md` — the full check list.
 
 ## Running steps
 

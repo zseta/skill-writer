@@ -75,17 +75,21 @@ Note: the `lint` step runs a Python script. It works where Copilot can run code 
 
 ```
 skill-writer/
-  SKILL.md              # router: pointer, step table, flow graph
+  SKILL.md              # router: pointer, step table, flow graph, Manager, Feedback
   GLOBAL.md             # shared knowledge + dispatch rule
   build/build.md        # entry point: build
   refactor/refactor.md  # entry point: refactor
   lint/
     lint.md             # entry point: lint
-    scripts/checks.py   # mechanical lint checks
-  references/           # the rules the skill applies
+    _scripts/checks.py  # mechanical lint checks
+  _scripts/
+    stamp_meta.py        # copies _references/ + the lint script into a target skill's _meta/
+  _references/          # the rules the skill applies
     structure.md        # folder tree and file templates
     style.md            # Simplified Technical English rules
     principles.md       # KISS, DRY, scriptification, etc.
     step-prompt-rules.md# prompt rules for Claude, Claude Code, Copilot
     lint-checks.md      # the full check list
 ```
+
+Every target skill `build` or `refactor` produces also gets a `_meta/` folder — a stamped copy of `_references/` and the lint script, using the same `_references/`/`_scripts/` naming convention it enforces on target skills. This is what lets the target skill check and patch itself later with no dependency on skill-writer being installed (see `## Feedback` in every target skill's `SKILL.md`).

@@ -4,12 +4,16 @@ The full check list. `lint` reports these. `build` and `refactor` fix them.
 
 ## Structure
 
-- SKILL.md holds only: frontmatter, the `GLOBAL.md` pointer, the step table, the flow graph. Anything else is a violation.
+- SKILL.md holds only: frontmatter, the `GLOBAL.md` pointer, the step table, the flow graph, `## Manager`, `## Feedback`. Anything else is a violation.
 - Every step is a folder with `<name>/<name>.md`. A bare step file is a violation.
-- A step's `references/` and `scripts/` live in its own folder. A skill-wide `references/` or `scripts/` is a violation.
+- A `references/` or `scripts/` folder without a leading underscore is a violation. Use `_references/` and `_scripts/`.
+- A step's `_references/` and `_scripts/` live in its own folder, unless shared. A file used by only one step must live in that step's own folder, not a shared one.
+- A shared `_references/` or `_scripts/` folder sits at the lowest level that contains every step using it. A shared folder placed higher than that, or duplicated across steps instead of shared, is a violation.
 - `GLOBAL.md` holds only `## Shared knowledge` and `## Running steps`.
 - `## Running steps` matches the stamped dispatch rule.
 - Every `SKILL.md` has a `## Manager` section, stamped verbatim.
+- Every `SKILL.md` has a `## Feedback` section, stamped verbatim, right after `## Manager`.
+- Every target skill has `_meta/_references/` (all five files) and `_meta/_scripts/lint_checks.py`. Missing or incomplete `_meta/` is a violation.
 - Every step's `Out` is a path or a status, not inline content.
 
 ## Flow graph

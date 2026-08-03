@@ -21,13 +21,22 @@ BANNED = ["carefully", "simply", "just ", "please", "make sure to",
           "utilize", "leverage", "initiate", "commence", "terminate",
           "regarding", "concerning", "facilitate"]
 REQUIRED_SECTIONS = ["## What it does", "**In:**", "**Out:**", "## Steps"]
+META_REFERENCE_FILES = [
+    "structure.md",
+    "style.md",
+    "principles.md",
+    "step-prompt-rules.md",
+    "lint-checks.md",
+]
 
 
 def find_steps(skill_dir):
-    """A step is a folder containing <name>/<name>.md."""
+    """A step is a folder containing <name>/<name>.md. _meta/ is never a step."""
     steps = {}
     for p in skill_dir.rglob("*.md"):
         if p.name in ("SKILL.md", "GLOBAL.md"):
+            continue
+        if "_meta" in p.relative_to(skill_dir).parts:
             continue
         if p.parent.name == p.stem:
             steps[p.stem] = p
@@ -153,8 +162,35 @@ def check_skill_md(skill_dir):
         return ["no SKILL.md"]
     text = skill_md.read_text()
     issues = []
-    if not re.search(r"^## Manager", text, re.M):
+    m_manager = re.search(r"^## Manager", text, re.M)
+    m_feedback = re.search(r"^## Feedback", text, re.M)
+    if not m_manager:
         issues.append("SKILL.md missing '## Manager' section")
+    if not m_feedback:
+        issues.append("SKILL.md missing '## Feedback' section")
+    if m_manager and m_feedback and m_feedback.start() < m_manager.start():
+        issues.append("'## Feedback' must come after '## Manager'")
+    return issues
+
+
+def check_meta(skill_dir):
+    meta_dir = skill_dir / "_meta"
+    issues = []
+    if not meta_dir.is_dir():
+        return ["missing '_meta/' — run _scripts/stamp_meta.py"]
+    for name in META_REFERENCE_FILES:
+        if not (meta_dir / "_references" / name).exists():
+            issues.append(f"_meta/_references/{name} missing")
+    if not (meta_dir / "_scripts" / "lint_checks.py").exists():
+        issues.append("_meta/_scripts/lint_checks.py missing")
+    return issues
+
+
+def check_folder_names(skill_dir):
+    issues = []
+    for p in skill_dir.rglob("*"):
+        if p.is_dir() and p.name in ("references", "scripts"):
+            issues.append(f"unprefixed folder: {p.relative_to(skill_dir)} (use _{p.name}/)")
     return issues
 
 
@@ -184,6 +220,14 @@ def main():
     skill_issues = check_skill_md(skill_dir)
     if skill_issues:
         report["issues"]["_skill_md"] = skill_issues
+
+    meta_issues = check_meta(skill_dir)
+    if meta_issues:
+        report["issues"]["_meta"] = meta_issues
+
+    folder_name_issues = check_folder_names(skill_dir)
+    if folder_name_issues:
+        report["issues"]["_folder_names"] = folder_name_issues
 
     print(json.dumps(report, indent=2))
 

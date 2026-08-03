@@ -16,7 +16,9 @@ SKILL.md shows what each step does. It hides how. The how lives in the step file
 
 ## Encapsulation
 
-A step owns its files. Its `references/` and `scripts/` live in its own folder. Steps do not reach into another step's folder.
+A step owns its files. Its `_references/` and `_scripts/` live in its own folder. Steps do not reach into another step's folder. The leading underscore marks these as skill machinery, not a step folder.
+
+When two or more steps need the same file or script, do not duplicate it into each step's folder. Put one shared copy in a `_references/` or `_scripts/` folder at the lowest level that contains all steps that use it. Example: if `build` and `refactor` both call the same script, the shared `_scripts/` folder sits next to `build/` and `refactor/`, not inside either one. A shared folder is scoped to its level: only steps at or below that level may use it. It is still a violation to place a shared folder above the lowest common level, or to let a step reach into a sibling step's private folder.
 
 ## Scriptification
 
@@ -27,7 +29,7 @@ Find step work that is deterministic. Move it to a script.
 
 When a step is fully mechanical:
 
-1. Write a script in the step's `scripts/` folder.
+1. Write a script in the step's `_scripts/` folder.
 2. The `## Steps` section calls the script, passes `In`, captures `Out`.
 3. Run the script once on a sample. Confirm it works before you finish. (Generate and verify.)
 
