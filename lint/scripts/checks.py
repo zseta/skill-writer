@@ -16,7 +16,7 @@ import re
 import sys
 from pathlib import Path
 
-RUN_RE = re.compile(r"^(inline|subagent|subagent:[a-z0-9.\-]+|script)$")
+RUN_RE = re.compile(r"^(inline|subagent|subagent:[a-z0-9.\-]+)$")
 BANNED = ["carefully", "simply", "just ", "please", "make sure to",
           "utilize", "leverage", "initiate", "commence", "terminate",
           "regarding", "concerning", "facilitate"]
@@ -147,6 +147,17 @@ def check_graph(skill_dir, steps):
     return issues
 
 
+def check_skill_md(skill_dir):
+    skill_md = skill_dir / "SKILL.md"
+    if not skill_md.exists():
+        return ["no SKILL.md"]
+    text = skill_md.read_text()
+    issues = []
+    if not re.search(r"^## Manager", text, re.M):
+        issues.append("SKILL.md missing '## Manager' section")
+    return issues
+
+
 def main():
     skill_dir = Path(sys.argv[1])
     report = {"skill": str(skill_dir), "issues": {}}
@@ -169,6 +180,10 @@ def main():
     graph_issues = check_graph(skill_dir, steps)
     if graph_issues:
         report["issues"]["_graph"] = graph_issues
+
+    skill_issues = check_skill_md(skill_dir)
+    if skill_issues:
+        report["issues"]["_skill_md"] = skill_issues
 
     print(json.dumps(report, indent=2))
 

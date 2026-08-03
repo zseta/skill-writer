@@ -9,6 +9,8 @@ The full check list. `lint` reports these. `build` and `refactor` fix them.
 - A step's `references/` and `scripts/` live in its own folder. A skill-wide `references/` or `scripts/` is a violation.
 - `GLOBAL.md` holds only `## Shared knowledge` and `## Running steps`.
 - `## Running steps` matches the stamped dispatch rule.
+- Every `SKILL.md` has a `## Manager` section, stamped verbatim.
+- Every step's `Out` is a path or a status, not inline content.
 
 ## Flow graph
 
@@ -23,7 +25,7 @@ The full check list. `lint` reports these. `build` and `refactor` fix them.
 - `## What it does` is in sync with `## Steps`.
 - `**Out:**` is a path when the step makes an artifact.
 - Extra sections are referenced by `## Steps`. No orphan sections. No broken references.
-- `run` field is valid: absent, `inline`, `subagent`, `subagent:<model>`, or `script`.
+- `run` field is valid: absent, `inline`, `subagent`, or `subagent:<model>`.
 
 ## Style (see style.md)
 

@@ -20,6 +20,5 @@ To run a step, read its frontmatter `run` field.
 - No `run` field, or `run: inline` → follow its steps in this context, same model.
 - `run: subagent` → spawn a subagent, same model. Pass its `In`. Capture its `Out`.
 - `run: subagent:<model>` → same as subagent, but use `<model>`.
-- `run: script` → run its script. No model. Capture its `Out`.
 
 Provide each step's `In`. Expect its `Out` back. For an artifact, `Out` is a file path, not the file body.

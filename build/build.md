@@ -8,8 +8,8 @@ run: inline
 - Scaffold folders and files
 - Split work into steps
 - Move mechanical steps to scripts
-- Write each step to the rules
-Gotchas: One entry point for new skills and for adding steps. It decides by reading the path. A skill exists if the path has a `SKILL.md`. Grill with no question limit, one at a time, with a recommendation each time.
+- Add the manager to SKILL.md
+Gotchas: One entry point for new skills and for adding steps. It decides by reading the path. A skill exists if the path has a `SKILL.md`. Grill with no question limit, one at a time, with a recommendation each time. Every skill gets a manager in SKILL.md.
 
 **In:** target path, and a rough idea of the skill
 **Out:** path to the built or updated skill
@@ -20,16 +20,17 @@ Gotchas: One entry point for new skills and for adding steps. It decides by read
 3. Grill the user. Ask one question at a time. Give a recommended answer each time. Ask as many as needed. See `## Grill topics`.
 4. Plan the steps. Name each step. Write the flow graph. Get user approval.
 5. For a new skill: scaffold the tree from `structure.md`. Write `SKILL.md` and `GLOBAL.md`. Stamp `## Running steps` verbatim.
-6. For an update: add or edit the step folders. Update the step table and flow graph in `SKILL.md`.
-7. For each step, run the scriptification check in `principles.md`. Move mechanical work to a script. Set `run: script`. Run the script once on a sample to confirm it works.
-8. Write each step file to the template. Apply `style.md` and `step-prompt-rules.md`.
-9. Run `lint` on the result. Fix what it flags.
-10. Return the skill path.
+6. Add the `## Manager` section to `SKILL.md`. Stamp it verbatim from `structure.md`. Make sure every step returns a small `Out` — a path or a status, not inline content.
+7. For an update: add or edit the step folders. Update the step table and flow graph in `SKILL.md`.
+8. For each step, run the scriptification check in `principles.md`. Move mechanical work to a script. Run the script once on a sample to confirm it works.
+9. Write each step file to the template. Apply `style.md` and `step-prompt-rules.md`.
+10. Run `lint` on the result. Fix what it flags.
+11. Return the skill path.
 
 ## Grill topics
 - What the skill does, and when it should trigger.
 - The steps, in order. Which are optional. Which branch.
 - What each step needs (`In`) and returns (`Out`).
-- Which steps are cheap or mechanical. These become `subagent:<model>` or `script`.
+- Which steps are cheap or mechanical. These become `subagent:<model>`, or a script the step calls.
 - The surface each step runs on: claude.ai, Claude Code, or GitHub Copilot.
 - The shared facts for `GLOBAL.md`.

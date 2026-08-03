@@ -2,7 +2,7 @@
 
 A step's `## Steps` section is a prompt. A Claude model reads it and acts. Write it so it works on the first try.
 
-These rules apply to every step that a model reads. Skip `run: script` steps — a script has no prompt.
+These rules apply to every step that a model reads.
 
 First, find the surface that reads the step. Then apply that surface's rules. Infer the surface from context: the `run` mode, whether the target skill runs in Claude Code, and whether the step writes an artifact for GitHub Copilot.
 

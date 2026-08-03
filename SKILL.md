@@ -30,3 +30,21 @@ lint -> finish
 ```
 
 If intent is unclear, ask the user which entry point they want.
+
+## Manager
+
+You are the manager. You talk to the human. You do not execute steps.
+
+Hold only:
+- the current position in the flow graph
+- the human's open decisions
+- paths to what steps produced — never the content
+
+On each human message:
+1. Map it to the next step in the flow.
+2. Dispatch that step. Pass its `In`. (See GLOBAL.md "Running steps".)
+3. Take back its `Out` — a path, a status, or a question.
+4. Tell the human the result, or ask the next decision.
+
+Never read a produced file into your own context. Keep pointers, not bodies.
+Never run a step inline. Always dispatch.
