@@ -1,8 +1,20 @@
 # skill-writer
 
-An agent skill that builds, refactors, and lints other agent skills.
+An agent skill that builds, refactors, and lints other agent skills (what we call "target skills").
 
-It enforces a standardized structure and style on every skill it produces: a thin `SKILL.md` router, a `GLOBAL.md` for shared knowledge, and steps as self-contained folders. It writes step instructions in Simplified Technical English, moves mechanical work into scripts, and checks its output against a fixed rule set.
+It enforces a standardized structure and style on every skill it produces: a thin `SKILL.md` router, a `GLOBAL.md` for shared knowledge, and steps as self-contained folders. It writes step instructions in Simplified Technical English, moves mechanical work into scripts and fixes itself if you find an issue later.
+
+## Benefits of using skill-writer
+
+### Built-in self-healing
+When you are using a skill produced by skill-writer and you experience issues with the skill, just call `/manager <problem you're experiencing>` and it will spawn a sub agent to fix the problem real-time so you can continue whatever you are working on.
+
+### Consistent structure across skills
+Every skill it produces follows the same layout: a thin `SKILL.md` router, a `GLOBAL.md` for shared knowledge, and steps as self-contained folders. Once you understand skill-writer structure, you know how to navigate all of them.
+
+### Prefer deterministic scripts over LLM instructions
+Deterministic work — parsing, transforming, file I/O, validation, formatting — is moved into scripts instead of left as prose instructions. Scripts run the same way every time and cost fewer tokens than prose plus generic tool calls.
+
 
 ## What it does
 
@@ -92,4 +104,3 @@ skill-writer/
     lint-checks.md      # the full check list
 ```
 
-Every target skill `build` or `refactor` produces also gets a `_meta/` folder — a stamped copy of `_references/` and the lint script, using the same `_references/`/`_scripts/` naming convention it enforces on target skills. This is what lets the target skill check and patch itself later with no dependency on skill-writer being installed (see `## Feedback` in every target skill's `SKILL.md`).
