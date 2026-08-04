@@ -1,6 +1,6 @@
 # skill-writer
 
-An agent skill that builds, refactors, and lints other agent skills (what we call "target skills").
+An agent skill that builds, refactors, and lints other agent skills.
 
 It enforces a standardized structure and style on every skill it produces: a thin `SKILL.md` router, a `GLOBAL.md` for shared knowledge, and steps as self-contained folders. It writes step instructions in Simplified Technical English, moves mechanical work into scripts and fixes itself if you find an issue later.
 
@@ -12,7 +12,7 @@ When you are using a skill produced by skill-writer and you experience issues wi
 ### Consistent structure across skills
 Every skill it produces follows the same layout: a thin `SKILL.md` router, a `GLOBAL.md` for shared knowledge, and steps as self-contained folders. Once you understand skill-writer structure, you know how to navigate all of them.
 
-### Prefer deterministic scripts over LLM instructions
+### Prefer deterministic scripts
 Deterministic work — parsing, transforming, file I/O, validation, formatting — is moved into scripts instead of left as prose instructions. Scripts run the same way every time and cost fewer tokens than prose plus generic tool calls.
 
 
