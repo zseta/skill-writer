@@ -7,6 +7,7 @@ The full check list. `lint` reports these. `build` and `refactor` fix them.
 - SKILL.md holds only: frontmatter, the `GLOBAL.md` pointer, the step table, the flow graph, `## Manager`, `## Feedback`. Anything else is a violation.
 - Every step is a folder with `<name>/<name>.md`. A bare step file is a violation.
 - A `references/` or `scripts/` folder without a leading underscore is a violation. Use `_references/` and `_scripts/`.
+- A folder that is not a step folder, `_references/`, `_scripts/`, or (skill root only) `_meta/` is a violation, even if underscore-prefixed (`_cli/`, `_layouts/`, ...).
 - A step's `_references/` and `_scripts/` live in its own folder, unless shared. A file used by only one step must live in that step's own folder, not a shared one.
 - A shared `_references/` or `_scripts/` folder sits at the lowest level that contains every step using it. A shared folder placed higher than that, or duplicated across steps instead of shared, is a violation.
 - `GLOBAL.md` holds only `## Shared knowledge` and `## Running steps`.

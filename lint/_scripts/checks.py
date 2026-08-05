@@ -186,11 +186,33 @@ def check_meta(skill_dir):
     return issues
 
 
+ALLOWED_SHARED_FOLDERS = ("_references", "_scripts")
+
+
 def check_folder_names(skill_dir):
+    """Only step folders, _references/, _scripts/, and root _meta/ are allowed."""
     issues = []
+    step_dirs = {p.parent for p in skill_dir.rglob("*.md") if p.parent.name == p.stem}
     for p in skill_dir.rglob("*"):
-        if p.is_dir() and p.name in ("references", "scripts"):
-            issues.append(f"unprefixed folder: {p.relative_to(skill_dir)} (use _{p.name}/)")
+        if not p.is_dir():
+            continue
+        rel = p.relative_to(skill_dir)
+        if p.name in ("references", "scripts"):
+            issues.append(f"unprefixed folder: {rel} (use _{p.name}/)")
+            continue
+        if p.name == "_meta":
+            if rel.parts != ("_meta",):
+                issues.append(f"_meta/ must be at the skill root, not: {rel}")
+            continue
+        if "_meta" in rel.parts:
+            continue  # _meta/ contents are a verbatim stamped copy, not subject to this check
+        if p.name in ALLOWED_SHARED_FOLDERS:
+            continue
+        if p in step_dirs:
+            continue
+        issues.append(
+            f"made-up folder: {rel} (only step folders, _references/, and _scripts/ are allowed)"
+        )
     return issues
 
 

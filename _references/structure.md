@@ -37,6 +37,7 @@ Rules:
 - Sub-steps are steps. Same folder rule, same file template. They nest to any depth.
 - A parent step's `## Steps` section calls its sub-steps by path.
 - `_meta/` is not a step. It never appears in the step table or the flow graph.
+- The only folders allowed, anywhere in the tree, are step folders, `_references/`, `_scripts/`, and (skill root only) `_meta/`. No other name, underscore-prefixed or not (`_cli/`, `_layouts/`, `assets/`, ...). A tool with both code and docs splits across `_scripts/` and `_references/` rather than getting its own folder.
 
 ## Meta
 
