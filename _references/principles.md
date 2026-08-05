@@ -10,6 +10,9 @@ Keep every step minimal. Include only the instructions the step needs. Cut the r
 
 Do not repeat a rule across step files. Put the shared fact in the target skill's `GLOBAL.md` under `## Shared knowledge`. Step files assume it.
 
+Before adding a rule to any `_references/*.md` file read the other files in that same `_references/` folder first. If the rule already exists there, point to it instead of restating it.
+
+
 ## Abstraction
 
 SKILL.md shows what each step does. It hides how. The how lives in the step file. SKILL.md is a router: pointer + step table + flow graph.
