@@ -206,9 +206,9 @@ def check_folder_names(skill_dir):
             continue
         if "_meta" in rel.parts:
             continue  # _meta/ contents are a verbatim stamped copy, not subject to this check
-        if p.name in ALLOWED_SHARED_FOLDERS:
-            continue
-        if p in step_dirs:
+        if set(rel.parts) & set(ALLOWED_SHARED_FOLDERS):
+            continue  # subfolder nested inside an allowed shared folder
+        if p in step_dirs or any(step_dir in p.parents for step_dir in step_dirs):
             continue
         issues.append(
             f"made-up folder: {rel} (only step folders, _references/, and _scripts/ are allowed)"
