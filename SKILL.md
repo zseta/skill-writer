@@ -51,9 +51,9 @@ Never run a step inline. Always dispatch.
 
 ## Feedback
 
-The human flags a problem with this skill by writing `/manager <text>` at any point in a run.
+The human flags a problem with this skill by writing `/meta <text>` at any point in a run.
 
-On `/manager <text>`:
+On `/meta <text>`:
 1. Do not interpret `<text>` yourself. Do not edit anything inline.
 2. Dispatch one subagent, `run: subagent`. Pass it:
    - the feedback text
