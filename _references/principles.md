@@ -37,3 +37,13 @@ When a step is fully mechanical:
 3. Run the script once on a sample. Confirm it works before you finish. (Generate and verify.)
 
 Reason: a script costs fewer tokens than prose plus generic tool calls. It is also more reliable.
+
+### Image-heavy steps
+
+Check any step that reviews screenshots or multiple images. Consider a script that combines them into one image first.
+
+- Use this when the images are small, or share a layout, and side-by-side or grid placement keeps each one readable.
+- Skip this when a single image needs full resolution, or the set is too large to stay readable combined.
+- The script tiles the images into one file with a layout tool (for example, an image library or ImageMagick). The step then reviews one image, not many.
+
+Reason: one image call costs fewer tokens than several, and Claude reviews it faster.
