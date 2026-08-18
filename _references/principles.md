@@ -47,3 +47,14 @@ Check any step that reviews screenshots or multiple images. Consider a script th
 - The script tiles the images into one file with a layout tool (for example, an image library or ImageMagick). The step then reviews one image, not many.
 
 Reason: one image call costs fewer tokens than several, and Claude reviews it faster.
+
+## Inline vs. subagent
+
+Pick `run: inline` or `run: subagent` on one axis: the context cost of the step's work versus the fixed cost of a subagent dispatch.
+
+- The step reads large files, makes many intermediate tool calls, or makes long output the manager does not need to keep → `subagent`. Only the small `Out` returns.
+- The step's process and output are both already small → `inline`.
+
+This is not the Scriptification rule above. Scriptification picks prose vs. script (judgment work vs. mechanical work). This rule picks inline vs. subagent (context cost of the step's work). Apply both: a step can be a script call and still run inline, or run as a subagent.
+
+See `structure.md` "## Manager" for the rule this protects: the manager keeps pointers, not bodies.

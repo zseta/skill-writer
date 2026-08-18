@@ -9,7 +9,7 @@ run: inline
 - Split work into steps
 - Move mechanical steps to scripts
 - Add the manager to SKILL.md
-Gotchas: One entry point for new skills and adding steps, decided by whether the path has a `SKILL.md`. Grill one question at a time, with a recommendation each time, no limit. Every skill gets a manager in SKILL.md.
+Gotchas: One entry point for new skills and for adding steps. It decides by reading the path. A skill exists if the path has a `SKILL.md`. Grill with no question limit, one at a time, with a recommendation each time. Every skill gets a manager in SKILL.md.
 
 **In:** target path, and a rough idea of the skill
 **Out:** path to the built or updated skill
@@ -32,6 +32,6 @@ Gotchas: One entry point for new skills and adding steps, decided by whether the
 - What the skill does, and when it should trigger.
 - The steps, in order. Which are optional. Which branch.
 - What each step needs (`In`) and returns (`Out`).
-- Which steps are cheap or mechanical. These become `subagent:<model>`, or a script the step calls.
+- Which steps run inline vs. as a subagent (`principles.md` "## Inline vs. subagent"). Which steps are mechanical enough for a script (`principles.md` "## Scriptification").
 - The surface each step runs on: claude.ai, Claude Code, or GitHub Copilot.
 - The shared facts for `GLOBAL.md`.

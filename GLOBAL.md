@@ -22,3 +22,5 @@ To run a step, read its frontmatter `run` field.
 - `run: subagent:<model>` → same as subagent, but use `<model>`.
 
 Provide each step's `In`. Expect its `Out` back. For an artifact, `Out` is a file path, not the file body.
+
+See `_references/principles.md` "## Inline vs. subagent" for how to choose `inline` vs. `subagent` when writing a step.
