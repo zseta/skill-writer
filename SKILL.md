@@ -1,6 +1,6 @@
 ---
 name: skill-writer
-description: "Build, refactor, and lint agent skills. Use this whenever the user wants to create a new skill, add or edit steps in an existing skill, restructure a skill to be thinner and cleaner, check a skill for problems, or convert a rough workflow into a proper skill. Trigger on any mention of making a skill, editing a skill, a SKILL.md file, skill steps, or 'turn this into a skill' — even if the user does not say the word 'skill-writer'."
+description: "Build, refactor, and lint agent skills: create a new skill, edit its steps, restructure it cleaner, check it for problems, or convert a workflow into one. Trigger on any mention of a skill, SKILL.md, or skill steps."
 ---
 
 # skill-writer

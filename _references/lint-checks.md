@@ -5,6 +5,7 @@ The full check list. `lint` reports these. `build` and `refactor` fix them.
 ## Structure
 
 - SKILL.md holds only: frontmatter, the `GLOBAL.md` pointer, the step table, the flow graph, `## Manager`, `## Feedback`. Anything else is a violation.
+- Frontmatter `description` is 38 words or less. Over 38 is a violation.
 - Every step is a folder with `<name>/<name>.md`. A bare step file is a violation.
 - A `references/` or `scripts/` folder without a leading underscore is a violation. Use `_references/` and `_scripts/`.
 - A folder that is not a step folder, `_references/`, `_scripts/`, or (skill root only) `_meta/` is a violation, even if underscore-prefixed (`_cli/`, `_layouts/`, ...).
@@ -26,7 +27,7 @@ The full check list. `lint` reports these. `build` and `refactor` fix them.
 ## Step file
 
 - Required sections in order: `## What it does`, `**In:**`, `**Out:**`, `## Steps`.
-- `## What it does` is 130 words or less, 3 to 6 bullets.
+- `## What it does` is 75 words or less, 3 to 6 bullets.
 - `## What it does` is in sync with `## Steps`.
 - `**Out:**` is a path when the step makes an artifact.
 - Extra sections are referenced by `## Steps`. No orphan sections. No broken references.

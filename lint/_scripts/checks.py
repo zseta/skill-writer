@@ -63,8 +63,8 @@ def check_what_it_does(text):
         return ["missing '## What it does' section"]
     block = m.group(1)
     words = len(block.split())
-    if words > 130:
-        issues.append(f"What it does is {words} words (max 130)")
+    if words > 75:
+        issues.append(f"What it does is {words} words (max 75)")
     bullets = [l for l in block.splitlines() if l.strip().startswith("-")]
     if not (3 <= len(bullets) <= 6):
         issues.append(f"What it does has {len(bullets)} bullets (need 3-6)")
@@ -156,6 +156,23 @@ def check_graph(skill_dir, steps):
     return issues
 
 
+def check_frontmatter_description(text):
+    m = re.match(r"^---\s*\n(.*?)\n---", text, re.S)
+    if not m:
+        return ["missing frontmatter"]
+    desc = None
+    for line in m.group(1).splitlines():
+        if line.strip().startswith("description:"):
+            desc = line.split(":", 1)[1].strip()
+            break
+    if desc is None:
+        return ["frontmatter missing 'description'"]
+    words = len(desc.split())
+    if words > 38:
+        return [f"description is {words} words (max 38)"]
+    return []
+
+
 def check_skill_md(skill_dir):
     skill_md = skill_dir / "SKILL.md"
     if not skill_md.exists():
@@ -170,6 +187,7 @@ def check_skill_md(skill_dir):
         issues.append("SKILL.md missing '## Feedback' section")
     if m_manager and m_feedback and m_feedback.start() < m_manager.start():
         issues.append("'## Feedback' must come after '## Manager'")
+    issues += check_frontmatter_description(text)
     return issues
 
 

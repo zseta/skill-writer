@@ -9,7 +9,7 @@ run: inline
 - Split work into steps
 - Move mechanical steps to scripts
 - Add the manager to SKILL.md
-Gotchas: One entry point for new skills and for adding steps. It decides by reading the path. A skill exists if the path has a `SKILL.md`. Grill with no question limit, one at a time, with a recommendation each time. Every skill gets a manager in SKILL.md.
+Gotchas: One entry point for new skills and adding steps, decided by whether the path has a `SKILL.md`. Grill one question at a time, with a recommendation each time, no limit. Every skill gets a manager in SKILL.md.
 
 **In:** target path, and a rough idea of the skill
 **Out:** path to the built or updated skill
@@ -19,7 +19,7 @@ Gotchas: One entry point for new skills and for adding steps. It decides by read
 2. Check the target path. If it has a `SKILL.md`, this is an update. If not, this is a new skill.
 3. Grill the user. Ask one question at a time. Give a recommended answer each time. Ask as many as needed. See `## Grill topics`.
 4. Plan the steps. Name each step. Write the flow graph. Get user approval.
-5. For a new skill: scaffold the tree from `structure.md`. Write `SKILL.md` and `GLOBAL.md`. Stamp `## Running steps` verbatim.
+5. For a new skill: scaffold the tree from `structure.md`. Write `SKILL.md` and `GLOBAL.md`. Stamp `## Running steps` verbatim. Keep the frontmatter `description` to 38 words or less.
 6. Add the `## Manager` and `## Feedback` sections to `SKILL.md`, in that order. Stamp both verbatim from `structure.md`. Make sure every step returns a small `Out` — a path or a status, not inline content.
 7. For an update: add or edit the step folders. Update the step table and flow graph in `SKILL.md`.
 8. For each step, run the scriptification check in `principles.md`. Move mechanical work to a script. Run the script once on a sample to confirm it works.

@@ -67,7 +67,7 @@ Rules:
 
 SKILL.md is thin. It holds only these six things:
 
-1. Frontmatter: `name` and `description`.
+1. Frontmatter: `name` and `description`. `description` is 38 words or less.
 2. One line pointing to `GLOBAL.md`.
 3. A step table: `order | step | purpose | file`.
 4. A flow graph (see below).
