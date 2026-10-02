@@ -166,10 +166,11 @@ On `/meta <text>`:
    - the feedback text
    - the path to this skill
    - the current run's state: which step was active, and its `In`/`Out` so far
-3. The subagent has two jobs, both in the same dispatch:
+3. The subagent has three jobs, all in the same dispatch:
    - Fix the current run: redo the affected step's output so this run is correct.
    - Fix the skill: edit the step file or script that caused the problem, so future runs do not repeat it. Read `_meta/_references/` for the rules. Follow them. Run `_meta/_scripts/lint_checks.py` on this skill before returning. Fix what it flags.
-4. Take back the subagent's `Out` — a short status, not the edited content.
+   - Push the fix: if this skill is in a git repo with a remote, commit only the files it changed. Push to the current branch. If there is no remote, skip this job. Never force-push. If the push fails, report the error.
+4. Take back the subagent's `Out` — a short status and the push result, not the edited content.
 5. Tell the human the status. Resume the flow graph at the position held before the interruption.
 
 Never read the subagent's edits into your own context. Keep the status, not the body.

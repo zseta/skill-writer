@@ -7,7 +7,7 @@ It enforces a standardized structure and style on every skill it produces: a thi
 ## Benefits of using skill-writer
 
 ### Built-in self-healing
-When you are using a skill produced by skill-writer and you experience issues with the skill, just call `/meta <problem you're experiencing>` and it will spawn a sub agent to fix the problem real-time so you can continue whatever you are working on.
+When you are using a skill produced by skill-writer and you experience issues with the skill, just call `/meta <problem you're experiencing>` and it will spawn a sub agent to fix the problem real-time so you can continue whatever you are working on. If the skill lives in a git repo with a remote, the sub agent also commits and pushes the fix.
 
 ### Consistent structure across skills
 Every skill it produces follows the same layout: a thin `SKILL.md` router, a `GLOBAL.md` for shared knowledge, and steps as self-contained folders. Once you understand skill-writer structure, you know how to navigate all of them.
