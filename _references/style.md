@@ -4,6 +4,7 @@ Write all step prose in Simplified Technical English (ASD-STE100 style). The goa
 
 ## Rules
 
+- Be terse.
 - Write one instruction per sentence.
 - Keep sentences short. Aim for 15 words or less. 20 is the ceiling.
 - Use the imperative. "Read the file." "Write the output."

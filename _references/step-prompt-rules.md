@@ -10,6 +10,7 @@ First, find the surface that reads the step. Then apply that surface's rules. In
 
 - Be explicit. Claude follows instructions literally. Missing context gives narrow output, not a smart guess.
 - State the output format and length.
+- For output a human reads, add "Be terse."
 - Give the reason when the reason changes what the reader does.
 - Do not add "think step by step". Claude calibrates thinking depth by itself.
 - Do not over-engineer. Add: "Make only the change asked for. Do not add features or refactor."
